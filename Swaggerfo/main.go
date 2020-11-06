@@ -5,8 +5,8 @@
 //     Schemes: http
 //     Host: localhost:8080
 //     Version: 0.0.1
-//     License: MIT http://opensource.org/licenses/MIT
-//     Contact: Daniel<danielfs.ti@gmail.com>
+//     License: KloudOne https://kloudone.com/
+//     Contact: Avinash<avinashup45@gmail.com>
 //
 //     Consumes:
 //     - text/plain
