@@ -18,7 +18,7 @@ func main() {
 	serverName := "localhost:3306"
 	user := "root"
 	password := ""
-
+	dbName:="org"
 	connectionString := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8mb4&collation=utf8mb4_unicode_ci&parseTime=true&multiStatements=true", user, password, serverName, dbName)
 	db, err := sql.Open("mysql", connectionString)
 	//db, err := sql.Open("mysql", "root:password @tcp(127.0.0.1:3306)/org")
