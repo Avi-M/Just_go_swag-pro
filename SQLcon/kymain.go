@@ -14,40 +14,34 @@ type test struct {
 }
 
 func main() {
-	fmt.Println("Go MySQL Tutorial")
+	fmt.Println("Go MySQL ")
 	serverName := "localhost:3306"
 	user := "root"
 	password := ""
-	dbName := "org"
-	// Open up our database connection.
-	// I've set up a database on my local machine using phpmyadmin.
-	// The database is called testDb
+
 	connectionString := fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8mb4&collation=utf8mb4_unicode_ci&parseTime=true&multiStatements=true", user, password, serverName, dbName)
 	db, err := sql.Open("mysql", connectionString)
 	//db, err := sql.Open("mysql", "root:password @tcp(127.0.0.1:3306)/org")
 
-	// if there is an error opening the connection, handle it
 	if err != nil {
 		panic(err.Error())
 	}
 
-	// defer the close till after the main function has finished
-	// executing
 	defer db.Close()
 
 	// perform a db.Query insert
 	insert, err := db.Query("INSERT INTO test VALUES ( 4, 'Bhuniya' )")
 
-	// if there is an error inserting, handle it
+
 	if err != nil {
 		panic(err.Error())
 	}
-	// be careful deferring Queries if you are using transactions
+	
 	defer insert.Close()
 	// Execute the query
 	results, err := db.Query("SELECT id, name FROM test")
 	if err != nil {
-		panic(err.Error()) // proper error handling instead of panic in your app
+		panic(err.Error()) 
 	}
 
 	for results.Next() {
@@ -55,7 +49,7 @@ func main() {
 		// for each row, scan the result into our tag composite object
 		err = results.Scan(&tag.ID, &tag.Name)
 		if err != nil {
-			panic(err.Error()) // proper error handling instead of panic in your app
+			panic(err.Error()) 
 		}
 		// and then print out the tag's Name attribute
 		log.Printf(tag.Name)
@@ -65,7 +59,7 @@ func main() {
 	// Execute the query
 	err = db.QueryRow("SELECT id, name FROM test where id = ?", 2).Scan(&tag.ID, &tag.Name)
 	if err != nil {
-		panic(err.Error()) // proper error handling instead of panic in your app
+		panic(err.Error()) 
 	}
 
 	log.Println(tag.ID)
